@@ -10,7 +10,7 @@ public class PairTest {
 
   @Test
   public void PairTest() {
-    Pair<Double, Double> pair = new Pair<>(75.0, -75.0);
+    Pair<Double, Double> pair = new Pair<Double, Double>(75.0, -75.0);
     assertTrue(pair.toString().equals("(75.0, -75.0)"));
 
     pair.setFirst(50.0);
