@@ -5,7 +5,11 @@ public enum Types {
   INT,
   VEC2,
   VEC3,
-  VEC4;
+  VEC4,
+  FLOAT_ARRAY,
+  INT_ARRAY,
+  VEC3_ARRAY,
+  VEC4_ARRAY;
 
 
   @Override
