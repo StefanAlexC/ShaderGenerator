@@ -25,14 +25,15 @@ public class Shader {
     return this;
   }
 
-  private String generateHeader() {
+  public String generateHeader() {
     return "#version 300 es\n"
         + "//Stefan Cuturela\n"
         + "\n"
         + "precision mediump float;\n"
         + "\n"
         + "out vec4 _GLF_color;\n"
-        + "uniform vec2 resolution;\n"
+        + "\n"
+        + symbolTable.declareInputParameters()
         + "\n";
   }
 
