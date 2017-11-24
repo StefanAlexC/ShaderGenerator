@@ -1,7 +1,10 @@
+import InstructionGenerators.BasicFloatInstructionGenerator;
 import Shader.PredefinedFunctions;
 import Shader.Shader;
 import Shader.SymbolTable;
+import Utils.Types;
 import java.io.IOException;
+import java.util.PriorityQueue;
 
 
 public class Main {
@@ -18,6 +21,15 @@ public class Main {
         .addFunctionFactory(PredefinedFunctions.getColorFromX)
         .addFunctionFactory(PredefinedFunctions.modulo)
         .addFunctionFactory(PredefinedFunctions.distanceY);
+
+    symbolTable.addUnmodifiableEntry("hello", Types.FLOAT);
+    symbolTable.addUnmodifiableEntry("point", Types.FLOAT);
+
+    BasicFloatInstructionGenerator generator = new BasicFloatInstructionGenerator(shader);
+
+    for (int i = 0; i < 6; i++) {
+      shader.addInstructionFactory(generator.generateInstruction());
+    }
 
     System.out.println(shader.toString());
   }

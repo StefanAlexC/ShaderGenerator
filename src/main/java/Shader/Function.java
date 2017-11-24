@@ -16,6 +16,14 @@ public class Function {
     this.body = body;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public Integer getNumberParams() {
+    return numberParams;
+  }
+
   @Override
   public String toString() {
     return returnType + name + "(" + returnType + " x, " + returnType + "y) {\n" + body + "}\n\n";

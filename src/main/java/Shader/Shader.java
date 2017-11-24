@@ -11,6 +11,14 @@ public class Shader {
   private List<Instruction> instructions = new LinkedList<>();
   private SymbolTable symbolTable;
 
+  public Set<Function> getFunctions() {
+    return functions;
+  }
+
+  public SymbolTable getSymbolTable() {
+    return symbolTable;
+  }
+
   public Shader(SymbolTable symbolTable) {
     this.symbolTable = symbolTable;
   }
@@ -38,9 +46,11 @@ public class Shader {
   }
 
   private String generateMainBody() {
-    return "void main(void) { \n}";
+    return "void main(void) {\n"
+        + instructions.stream().map(x -> "  " + x.toString() + "\n").reduce(String::concat)
+        .orElse("")
+        + "}";
   }
-
 
   private String calculatePixelValue() {
     return null;
