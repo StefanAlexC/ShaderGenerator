@@ -26,6 +26,7 @@ public class Function {
 
   @Override
   public String toString() {
-    return returnType + name + "(" + returnType + " x, " + returnType + "y) {\n" + body + "}\n\n";
+    return returnType + name + "(" + returnType + " x, " + returnType + " y, " + returnType + " "
+        + "z, " + returnType  + " w) {\n" + body + "}\n\n";
   }
 }

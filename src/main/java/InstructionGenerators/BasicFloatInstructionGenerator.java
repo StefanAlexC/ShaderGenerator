@@ -40,12 +40,12 @@ public class BasicFloatInstructionGenerator implements InstructionGenerator {
 
   private VariableNode chooseAssignee() {
     return new VariableNode(symbolTable.getModifiableEntry(randomizer.nextInt(symbolTable
-        .getModifiableEntriesLength())));
+        .getModifiableFloatsLength())));
   }
 
   private VariableNode chooseARandomVariable() {
     return new VariableNode(symbolTable.getAEntry(randomizer.nextInt(symbolTable
-        .getModifiableEntriesLength())));
+        .getAllFloatsLength())));
   }
 
   private FunctionNode generateFunctionNode() {
