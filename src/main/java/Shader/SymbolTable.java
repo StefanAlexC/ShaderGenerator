@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 public class SymbolTable {
 
@@ -69,5 +70,9 @@ public class SymbolTable {
 
   public String getAEntry(int index) {
     return allFloats.get(index);
+  }
+
+  Stream<Entry<String,Types>> getModifiableList() {
+    return modifiableEntries.entrySet().stream();
   }
 }
