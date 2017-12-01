@@ -57,7 +57,7 @@ public class Shader {
     return "void main(void) {\n"
         + instructions.stream().map(x -> "  " + x.toString() + "\n").reduce(String::concat)
         .orElse("")
-        + "}";
+        + "  fract(_GLF_color);\n}";
   }
 
   private String calculatePixelValue() {

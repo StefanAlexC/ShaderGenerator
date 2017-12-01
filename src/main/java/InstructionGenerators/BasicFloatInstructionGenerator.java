@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class BasicFloatInstructionGenerator implements InstructionGenerator {
 
-  private final Random randomizer = new Random(102103213);
+  private final Random randomizer = new Random(1021032132);
   private final SymbolTable symbolTable;
   private final Set<Function> functions;
 
@@ -66,7 +66,7 @@ public class BasicFloatInstructionGenerator implements InstructionGenerator {
   private ExpressionNode selectARandomExpressionNode() {
     double random = randomizer.nextDouble();
 
-    if (random < 0.2) {
+    if (random < 0.1) {
       return generateFunctionNode();
     } else if (random < 0.6){
       return chooseARandomVariable();

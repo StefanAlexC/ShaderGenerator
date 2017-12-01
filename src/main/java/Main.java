@@ -23,7 +23,9 @@ public class Main {
         .addFunctionFactory(PredefinedFunctions.distanceY);
 
     symbolTable.addUnmodifiableEntry("hello", Types.FLOAT);
-    symbolTable.addUnmodifiableEntry("point", Types.FLOAT);
+    symbolTable.addUnmodifiableEntry("point", Types.VEC2);
+    symbolTable.addUnmodifiableEntry("circle", Types.VEC3);
+    symbolTable.addUnmodifiableEntry("square", Types.VEC4);
 
     BasicFloatInstructionGenerator generator = new BasicFloatInstructionGenerator(shader);
 
@@ -32,5 +34,8 @@ public class Main {
     }
 
     System.out.println(shader.toString());
+    System.out.println("-------------------------------------------------------------");
+    System.out.println(shader.getInputJson());
+
   }
 }
