@@ -55,6 +55,7 @@ public class Shader {
 
   private String generateMainBody() {
     return "void main(void) {\n"
+        + symbolTable.declareLocalVariable()
         + instructions.stream().map(x -> "  " + x.toString() + "\n").reduce(String::concat)
         .orElse("")
         + "  fract(_GLF_color);\n}";

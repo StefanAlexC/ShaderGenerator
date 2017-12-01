@@ -5,16 +5,27 @@ import Shader.SymbolTable;
 import Utils.Types;
 import java.io.IOException;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 
 public class Main {
 
-  public static double randomOffset(double number) {
-    return (number - 0.5) * 200.0;
+  private static Types randomType(int x) {
+    switch (x) {
+      case 0: return Types.FLOAT;
+      case 1: return Types.VEC2;
+      case 2: return Types.VEC3;
+      case 3: return Types.VEC4;
+    }
+    //TODO: Update for other types
+    return Types.FLOAT;
   }
 
   public static void main(String[] args) throws IOException {
     SymbolTable symbolTable = new SymbolTable();
+    String modifiable = "modifiable";
+    String unmodifiable = "unmodifiable";
+    Random random = new Random();
 
     Shader shader = new Shader(symbolTable).addFunctionFactory(PredefinedFunctions.distanceX)
         .addFunctionFactory(PredefinedFunctions.distanceY)
@@ -22,14 +33,17 @@ public class Main {
         .addFunctionFactory(PredefinedFunctions.modulo)
         .addFunctionFactory(PredefinedFunctions.distanceY);
 
-    symbolTable.addUnmodifiableEntry("hello", Types.FLOAT);
-    symbolTable.addUnmodifiableEntry("point", Types.VEC2);
-    symbolTable.addUnmodifiableEntry("circle", Types.VEC3);
-    symbolTable.addUnmodifiableEntry("square", Types.VEC4);
+    for (int i = 0; i < 4 + random.nextInt(6); i++) {
+      symbolTable.addUnmodifiableEntry(unmodifiable + i, randomType(random.nextInt(4)));
+    }
+
+    for (int i = 0; i < 5 + random.nextInt(10); i++) {
+      symbolTable.addModifiableEntry(modifiable + i, randomType(random.nextInt(4)));
+    }
 
     BasicFloatInstructionGenerator generator = new BasicFloatInstructionGenerator(shader);
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 10 + random.nextInt(20); i++) {
       shader.addInstructionFactory(generator.generateInstruction());
     }
 

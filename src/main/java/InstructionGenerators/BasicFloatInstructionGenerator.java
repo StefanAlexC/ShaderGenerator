@@ -53,7 +53,7 @@ public class BasicFloatInstructionGenerator implements InstructionGenerator {
     FunctionNodeBuilder builder = FunctionNodeBuilder.aFunctionNode(function.getName());
 
     for (int i = 0; i < function.getNumberParams(); i++) {
-      builder.withParam(selectARandomExpressionNode());
+      builder.withParam(selectARandomArgumentNode());
     }
 
     return builder.build();
@@ -63,15 +63,19 @@ public class BasicFloatInstructionGenerator implements InstructionGenerator {
     return functions.toArray(new Function[0])[randomizer.nextInt(functions.size())];
   }
 
+  private ExpressionNode selectARandomArgumentNode() {
+    double random = randomizer.nextDouble();
+
+    return chooseARandomVariable();
+  }
+
   private ExpressionNode selectARandomExpressionNode() {
     double random = randomizer.nextDouble();
 
-    if (random < 0.1) {
+    if (random < 0.4) {
       return generateFunctionNode();
-    } else if (random < 0.6){
-      return chooseARandomVariable();
     } else {
-      return new ConstantNode(randomizer.nextFloat() * randomizer.nextInt(100));
+      return chooseARandomVariable();
     }
   }
 }

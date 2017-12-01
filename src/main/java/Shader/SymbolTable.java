@@ -56,6 +56,11 @@ public class SymbolTable {
         (x -> "uniform " + declareVariable(x) + ";\n").reduce(String::concat).orElse("");
   }
 
+  public String declareLocalVariable() {
+    return modifiableEntries.entrySet().stream().map(x -> declareVariable(x) + ";\n").reduce
+        (String::concat).orElse("");
+  }
+
   public int getAllFloatsLength() {
     return allFloats.size();
   }
@@ -75,4 +80,5 @@ public class SymbolTable {
   Stream<Entry<String,Types>> getUnmodifiableStream() {
     return unmodifiableEntries.entrySet().stream();
   }
+
 }
