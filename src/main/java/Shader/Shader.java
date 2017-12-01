@@ -74,6 +74,7 @@ public class Shader {
         }}));
 
     return InputArg.toStringListJson(symbolTable.getUnmodifiableStream()
+        .filter(x -> !x.getKey().equals("gl_FragCoord"))
         .map(x -> x.getKey().equals("resolution") ? resolution :
         inputGenerator.generateArgument(x.getKey(), x.getValue())).collect(Collectors.toList()));
   }

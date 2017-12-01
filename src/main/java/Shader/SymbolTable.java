@@ -19,6 +19,7 @@ public class SymbolTable {
   public SymbolTable() {
     //TODO: Modifiy later to improve type assignment
     addUnmodifiableEntry("resolution", Types.VEC2);
+    addUnmodifiableEntry("gl_FragCoord", Types.VEC2);
     addModifiableEntry("_GLF_color", Types.VEC4);
   }
 
