@@ -72,7 +72,7 @@ public class SymbolTable {
     return allFloats.get(index);
   }
 
-  Stream<Entry<String,Types>> getModifiableList() {
-    return modifiableEntries.entrySet().stream();
+  Stream<Entry<String,Types>> getUnmodifiableStream() {
+    return unmodifiableEntries.entrySet().stream();
   }
 }

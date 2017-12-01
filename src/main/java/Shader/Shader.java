@@ -72,8 +72,8 @@ public class Shader {
           add(256.0);
         }}));
 
-    return InputArg.toStringListJson(symbolTable.getModifiableList().map(x ->
-        x.getKey().equals("resolution") ? resolution :
+    return InputArg.toStringListJson(symbolTable.getUnmodifiableStream()
+        .map(x -> x.getKey().equals("resolution") ? resolution :
         inputGenerator.generateArgument(x.getKey(), x.getValue())).collect(Collectors.toList()));
   }
 

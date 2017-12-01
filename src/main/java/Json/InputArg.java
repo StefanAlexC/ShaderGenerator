@@ -32,7 +32,7 @@ public class InputArg {
 
   public String toJsonString() {
     JsonObject jsonObject = new JsonObject();
-    jsonObject.add("resolution", gson.toJsonTree(value));
+    jsonObject.add(name, gson.toJsonTree(value));
     String string = gson.toJson(jsonObject);
     return string.substring(2, string.length() - 2);
   }

@@ -16,10 +16,6 @@ public class BasicInputGenerator implements InputGenerator {
   public InputArg generateArgument(String name, Types type) {
     Values value = new Values(typeToGLType(type), generateValue(type));
 
-    switch (type) {
-      case FLOAT:
-    }
-
     return new InputArg(name, value);
   }
 
