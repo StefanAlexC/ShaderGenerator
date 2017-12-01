@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class BasicInputGenerator implements InputGenerator {
 
-  private static final int doubleSoftCap = 30;
+  private static final int doubleSoftCap = 256;
 
   @Override
   public InputArg generateArgument(String name, Types type) {
@@ -42,7 +42,7 @@ public class BasicInputGenerator implements InputGenerator {
     Random random = new Random();
 
     for (int i = 0; i < numberArguments; i++) {
-      result.add(random.nextDouble() * random.nextInt(30));
+      result.add(random.nextDouble() * random.nextInt(doubleSoftCap));
     }
 
     return result;

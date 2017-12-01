@@ -27,7 +27,7 @@ public class BasicFloatInstructionGenerator implements InstructionGenerator {
   public Instruction generateInstruction() {
     Instruction instruction = new Instruction(chooseAssignee());
 
-    for (int i = 0; i < randomizer.nextInt(5); i++) {
+    for (int i = 0; i < 1 + randomizer.nextInt(5); i++) {
       instruction.addExpression(selectARandomExpressionNode());
     }
 

@@ -33,17 +33,17 @@ public class Main {
         .addFunctionFactory(PredefinedFunctions.modulo)
         .addFunctionFactory(PredefinedFunctions.distanceY);
 
-    for (int i = 0; i < 4 + random.nextInt(6); i++) {
+    for (int i = 0; i < 4; i++) {
       symbolTable.addUnmodifiableEntry(unmodifiable + i, randomType(random.nextInt(4)));
     }
 
-    for (int i = 0; i < 5 + random.nextInt(10); i++) {
+    for (int i = 0; i < 3; i++) {
       symbolTable.addModifiableEntry(modifiable + i, randomType(random.nextInt(4)));
     }
 
     BasicFloatInstructionGenerator generator = new BasicFloatInstructionGenerator(shader);
 
-    for (int i = 0; i < 10 + random.nextInt(20); i++) {
+    for (int i = 0; i < 30 + random.nextInt(20); i++) {
       shader.addInstructionFactory(generator.generateInstruction());
     }
 
